@@ -1,0 +1,16 @@
+import csv
+
+if __name__ == "__main__":
+    #create variables
+    with open("soccer_players.csv") as players:
+        soccer_players =csv.DictReader(players,delimiter',')
+
+    #programming logic to divide 18 players into 3 teams of 6 players
+    #team names are Sharks, Dragons, and Raptors and should have
+    #equal number of players and experienced players should be evenly distributed
+    #create team.txt that includes:
+    #name of team
+    #player_name, EXPERIENCED, guardian(s)_name
+    #create 18 player_name.txt(a .txt file for each player) which are welcome letters to players' guardians
+    #each player_name.txt file begins with the text "Dear 'guardian(s)_name' " and should include
+    #player_name, team_name, and time & date of first practise
