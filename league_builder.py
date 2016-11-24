@@ -12,6 +12,7 @@ if __name__ == "__main__":
     players_list = []
     xp = []
     no_xp = []
+    teams = {'Sharks': [], 'Dragons': [], 'Raptors': []}
 
     # function that takes in a list of players
     # and divides them into equal teams
@@ -23,11 +24,11 @@ if __name__ == "__main__":
             if len(players) % 3 == 0:
                 while len(players) > 0:
                     random.shuffle(players)
-                    Sharks.append(players[0])
+                    teams['Sharks'].append(players[0])
                     players.remove(players[0])
-                    Dragons.append(players[0])
+                    teams['Dragons'].append(players[0])
                     players.remove(players[0])
-                    Raptors.append(players[0])
+                    teams['Raptors'].append(players[0])
                     players.remove(players[0])
             else:
                 print("""Uneven number of players.
@@ -74,9 +75,9 @@ if __name__ == "__main__":
             f.close()
 
     exist('team.txt')
-    write_team('team.txt', 'Sharks', Sharks)
-    write_team('team.txt', 'Dragons', Dragons)
-    write_team('team.txt', 'Raptors', Raptors)
+    # write teams to file
+    for name, players in teams.items():
+        write_team('team.txt', name, players)
 
     # create 18 player_name.txt files(a .txt file for each player)
     # which are welcome letters to players' guardians
@@ -95,6 +96,6 @@ if __name__ == "__main__":
                     .format(player[0], team_name, time.strftime("%d/%m/%Y")))
             f.close()
     f = os.getcwd() + '/Letters/'
-    write_letter(f, 'Sharks', Sharks)
-    write_letter(f, 'Dragons', Dragons)
-    write_letter(f, 'Raptors', Raptors)
+    # write letters for every team member for all teams
+    for name, players in teams.items():
+        write_letter(f, name, players)
